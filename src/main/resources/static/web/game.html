@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Space Battle</title>
+    <link rel="stylesheet" href="styles/game.css">
+    <link href="https://fonts.googleapis.com/css?family=VT323" rel="stylesheet">
+</head>
+<body>
+       
+    <h1>Ship locations!</h1>
+   
+   <div id="gridvue">
+       
+        <h4>{{gamePlayerName_1}}(You) vs {{gamePlayerName_2}}</h4>
+        <div class="tables">
+<div class="table1">
+       <table>
+           <tr v-for="letter,j in letters">
+               <td v-for="number,i in numbers" v-if="j==0 || i==0" v-bind:id="letter+number" >
+                <span v-if="j==0 || i==0">{{letter+number}}</span>
+               </td>
+               <td v-else v-bind:id="letter+number"  @mouseleave="shipClean()" @mouseover="shipHover()" @click="shipStay()"></td>
+           </tr>
+       </table>
+    </div> 
+
+    <div v-if="si">
+        <div class="ship1">
+ <button type="button" @click="btnVertical()">VERTICAL</button>
+<button type="button" @click="btnHorizontal()">HORIZONTAL</button> 
+</div>          
+<button type="button" @click="getBattleship()" id="btn1">Battleship</button>
+
+<div class="ship2">
+    <button type="button" @click="getSubmarine()" id="btn2">Submarine</button>
+</div>
+<div class="ship3">
+    <button type="button" @click="getPatrolboat()" id="btn3">Patrol Boat</button>
+</div>
+<div class="ship4">
+    <button type="button" @click="getCarrier()" id="btn4">Carrier</button>
+</div>
+<div class="ship5">
+    <button type="button" @click="getDestroyer()" id="btn5">Destroyer</button>
+</div>
+<div>
+<button  v-if="allShips" type="button" @click="getSpaceships()" @click="cleanButtons()" class="randomShips">Ships</button>
+</div>    
+</div>
+
+<div class="salvos" v-else>
+    <button id="salvo1" class="salvoImage" @click="salvoCaller1()">BOOM</button>
+    <button id="salvo2" class="salvoImage" @click="salvoCaller2()">BOOM</button>
+    <button id="salvo3" class="salvoImage" @click="salvoCaller3()">BOOM</button>
+    <button type="button" class="fireSalvos" @click="fireSalvos()">FIRE, FIRE!</button>
+
+</div>
+
+
+    <div class="table2">
+       <table>
+            <tr v-for="letter,j in letters">
+                <td v-for="number,i in numbers" v-if="j==0 || i==0" v-bind:id="letter + number + 's'">
+                 <span v-if="j==0 || i==0">{{letter+number}}</span>
+                </td>
+                <td v-else  v-bind:id="letter+number +'s'" @mouseover="salvoHover()" @mouseleave="salvoClean()" @click="salvoStay()" ></td>
+            </tr>
+        </table>
+    </div>
+    </div>
+    <div class="stars"></div>
+<div class="twinkling"></div>
+<div class="clouds"></div>
+   </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.17/dist/vue.js"></script>
+    <script src="./scripts/game.js"></script>
+
+</body>
+</html>

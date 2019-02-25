@@ -24,3 +24,5 @@
 /dist/
 /nbdist/
 /.nb-gradle/
+/salvo 3
+.DS_Store

@@ -22,6 +22,10 @@ public class Game {
     @OneToMany(mappedBy="game", fetch=FetchType.EAGER)
     private Set<GamePlayer> gamePlayers = new HashSet<>(); // this has to be initialized
 
+
+
+
+
     public void addGamePlayer(GamePlayer gamePlayer) {
         gamePlayer.setGame(this);
         gamePlayers.add(gamePlayer);
@@ -62,4 +66,7 @@ public class Game {
     public Set<GamePlayer> getGamePlayers(){
         return gamePlayers;
     }
+
+
+
 }
