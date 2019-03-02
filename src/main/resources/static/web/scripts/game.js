@@ -147,24 +147,24 @@ var vue = new Vue({
             for (i = 0; i < data.Salvoes.length; i++) {
                 for (j = 0; j < data.Salvoes[i].position.length; j++) {
                     document
-                        .getElementById(data.Salvoes[i].position[j])
+                        .getElementById(data.Salvoes[i].position[j] + "s")
                         .innerHTML = data
                         .Salvoes[i]
                         .turn;
                     //document.getElementById(data.Salvoes[i].position[j]).classList.add("salvoes");
-                    if (document.getElementById(data.Salvoes[i].position[j]).classList.contains("shipPosition")) {
+                    if (document.getElementById(data.Salvoes[i].position[j] + "s").classList.contains("shipPosition")) {
                         var img = document.createElement("img");
                         img.className = "bomb";
                         img.src = "styles/pixelexplosion.gif";
                         document
-                            .getElementById(data.Salvoes[i].position[j])
+                            .getElementById(data.Salvoes[i].position[j] + "s")
                             .append(img);
                     } else {
                         var img = document.createElement("img");
                         img.className = "water";
                         img.src = "styles/water.gif";
                         document
-                            .getElementById(data.Salvoes[i].position[j])
+                            .getElementById(data.Salvoes[i].position[j] + "s")
                             .append(img);
                     }
 
@@ -179,15 +179,15 @@ var vue = new Vue({
                 console.log("for1")
                 for (j = 0; j < data.EnemySalvoes[i].position.length; j++) {
                     document
-                        .getElementById(data.EnemySalvoes[i].position[j] + "s")
+                        .getElementById(data.EnemySalvoes[i].position[j])
                         .innerHTML = data
                         .EnemySalvoes[i]
                         .turn;
                     console.log("for2")
-                    console.log(data.EnemySalvoes[i].position[j] + "s")
+                    console.log(data.EnemySalvoes[i].position[j])
 
                     document
-                        .getElementById(data.EnemySalvoes[i].position[j] + "s")
+                        .getElementById(data.EnemySalvoes[i].position[j])
                         .classList
                         .add("enemySalvoes");
 
@@ -195,7 +195,7 @@ var vue = new Vue({
                     img.className = "bomb";
                     img.src = "styles/pixelexplosion.gif";
                     document
-                        .getElementById(data.EnemySalvoes[i].position[j] + "s")
+                        .getElementById(data.EnemySalvoes[i].position[j])
                         .append(img);
                     console.log(data.EnemySalvoes[i].position[j])
                 }
@@ -826,8 +826,12 @@ var vue = new Vue({
                         .getElementById("salvo1")
                         .style
                         .display = "none";
+                if(id.length == 3){
+                this.salvoLocation.push(id.substr(0,2));
+                } else {
+                    this.salvoLocation.push(id.substr(0,3));
+                }
 
-                this.salvoLocation.push(id);
                 console.log(this.salvoLocation)
                 
                 }
@@ -837,7 +841,11 @@ var vue = new Vue({
                         .getElementById("salvo2")
                         .style
                         .display = "none";
-                        this.salvoLocation.push(id);
+                        if(id.length == 3){
+                            this.salvoLocation.push(id.substr(0,2));
+                            } else {
+                                this.salvoLocation.push(id.substr(0,3));
+                            }
                         console.log(this.salvoLocation)
 
                 }
@@ -847,7 +855,11 @@ var vue = new Vue({
                         .getElementById("salvo3")
                         .style
                         .display = "none";
-                        this.salvoLocation.push(id);
+                        if(id.length == 3){
+                            this.salvoLocation.push(id.substr(0,2));
+                            } else {
+                                this.salvoLocation.push(id.substr(0,3));
+                            }
                         console.log(this.salvoLocation)
 
                 }

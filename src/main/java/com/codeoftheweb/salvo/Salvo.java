@@ -58,6 +58,10 @@ public class Salvo {
         return position;
     }
 
+    public void setTurn(Integer turn) {
+        this.turn = turn;
+    }
+
     public void setPosition(List<String> position) {
         this.position = position;
     }
