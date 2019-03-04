@@ -144,15 +144,10 @@ var vue = new Vue({
             console.log(this.gamePlayerName_1);
         },
         getSalvoes: function (data) {
+            var locations = Object.getOwnPropertyNames(data.posSHipOp);
             for (i = 0; i < data.Salvoes.length; i++) {
                 for (j = 0; j < data.Salvoes[i].position.length; j++) {
-                    document
-                        .getElementById(data.Salvoes[i].position[j] + "s")
-                        .innerHTML = data
-                        .Salvoes[i]
-                        .turn;
-                    //document.getElementById(data.Salvoes[i].position[j]).classList.add("salvoes");
-                    if (document.getElementById(data.Salvoes[i].position[j] + "s").classList.contains("shipPosition")) {
+                    if(locations.includes(data.Salvoes[i].position[j])) {
                         var img = document.createElement("img");
                         img.className = "bomb";
                         img.src = "styles/pixelexplosion.gif";
@@ -166,11 +161,29 @@ var vue = new Vue({
                         document
                             .getElementById(data.Salvoes[i].position[j] + "s")
                             .append(img);
+
+
+
+                    }
+                    
+                        /* var img = document.createElement("img");
+                        img.className = "bomb";
+                        img.src = "styles/pixelexplosion.gif";
+                        document
+                            .getElementById(data.Salvoes[i].position[j] + "s")
+                            .append(img);
+                    } else {
+                        var img = document.createElement("img");
+                        img.className = "water";
+                        img.src = "styles/water.gif";
+                        document
+                            .getElementById(data.Salvoes[i].position[j] + "s")
+                            .append(img); */
                     }
 
                 }
 
-            }
+            
         },
 
         getEnemySalvoes: function (data) {
